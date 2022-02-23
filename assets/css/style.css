@@ -35,6 +35,14 @@
     background-color: #3498db;
 }
 
+.ui-menu-color-interests{
+    background-color: #e74c3c;
+}
+
+.ui-menu-color-github{
+    background-color: #1c4a6c;
+}
+
 .ui-menu-color-download{
     background-color: #525252;
 }
@@ -368,6 +376,12 @@ button[type="submit"]{
     color: #fafafa;
     background-color: #e84610;
 }
+
+/* -----------------------------MAP */
+
+/* div#map{
+    min-height: 360px;
+} */
 
 /* -----------------------------MEDIA QUERIES */
 
