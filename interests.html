@@ -70,6 +70,7 @@
                             </h3>
                         </div>
                     </div>
+                    <!-- a div for where we want the map to appear -->
                     <div id="map"></div>
                 </div>
                 <div class="col-md-8 bg-color-groups">
@@ -203,8 +204,13 @@
 
         </footer>
         
-        <!-- <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script> -->
-        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDHHyac2SiOYPNYxXMK7rqJjnB8nCaaxE&callback=initMap"></script> -->
+        <!-- to add clusters to our map -->
+        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+        <!-- google maps API file to generate maps (defer waits until the page has loaded) -->
+        <!-- takes callback function 'initMap() which we create' -->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhttdpkqV7qsuDsJKyyuQFJQE71OyffEk&callback=initMap"></script>
+
         <!-- <script src="assets/js/maps.js"></script> -->
     </body>
 
