@@ -15,6 +15,28 @@ function userInformationHTML(user){
     </div>`;
 }
 
+// called in fetchGitHubInformation() (repos is an array)
+function repoInformationHTML(repos){
+    if (repos.length === 0){
+        return `<div class="clearfix repo-list">No repos to display</div>`;
+    }
+    // using map() to iterate through all the found repos and store them as li items
+    var listItemsHTML = repos.map(function(repo){
+        return `<li>
+                    <a href="${repo.html_url} target="_blank">${repo.name}</a>
+                </li>`;
+    });
+    // the ul is the parent elemst of the li items, joined with a \n between
+    return `<div class="clearfix repo-list">
+                <p>
+                    <strong>Repo List:</strong>
+                </p>
+                <ul>
+                    ${listItemsHTML.join("\n")}
+                </ul>
+            </div>`;
+};
+
 // called in github.html
 function fetchGitHubInformation(event){
     var username = $("#gh-username").val();
@@ -32,13 +54,18 @@ function fetchGitHubInformation(event){
     // start of a jQuery promise
     $.when(
         // to get the user data using the api
+        $.getJSON(`https://api.github.com/users/${username}`),
+        // to get the user repo data using the api
         $.getJSON(`https://api.github.com/users/${username}`)
     ).then(
-        function(response){
+        function(firstResponse, secondResponse){
             // storing the found user data
-            var userData = response;
+            var userData = firstResponse[0];
+            var repoData = secondResponse[0];
+
             // calls function to write that data to the html doc
             $("#gh-user-data").html(userInformationHTML(userData));
+            $("#gh-repo-data").html(repoInformationHTML(repoData));
         }, function(errorResponse){
             // for page not found error
             if (errorResponse.status === 404){
