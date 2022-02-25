@@ -15,8 +15,11 @@
         <!--custom css-->
         <link rel="stylesheet" href="./assets/css/style.css">
 
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-        <!-- <script type="text/javascript" src="assets/js/github-information.js"></script> -->
+        <!-- jQuery link -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- external link to js -->
+        <script type="text/javascript" src="./assets/js/github-information.js"></script>
 
         <title>Charlie</title>
     </head>
@@ -71,10 +74,10 @@
                     <h5 class="uppercase text-center">You can also search on other user profiles</h5>
     
                     <div class="center-form">
+                        <!-- default val 'octocat' is the github 'mascot' -->
                         <input type="text" id="gh-username" value="octocat" oninput="fetchGitHubInformation()" />
                         <div id="gh-user-data"></div>
                         <div id="gh-repo-data"></div>
-    
                     </div>
     
                 </div>
