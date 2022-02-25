@@ -39,6 +39,9 @@ function repoInformationHTML(repos){
 
 // called in github.html
 function fetchGitHubInformation(event){
+    // emptying the divs between searches
+    $("gh-user-data").html("");
+    $("gh-repo-data").html("");
     var username = $("#gh-username").val();
     // if the username field is empty
     if (!username){
@@ -76,3 +79,6 @@ function fetchGitHubInformation(event){
             }
         });
 }
+
+// having the octocat profile displayed by default
+$(document).ready(fetchGitHubInformation);
