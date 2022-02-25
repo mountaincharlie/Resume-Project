@@ -73,6 +73,9 @@ function fetchGitHubInformation(event){
             // for page not found error
             if (errorResponse.status === 404){
                 $("#gh-user-data").html(`<h2>No information was found on GitHub for user ${username}</h2>`);
+            } else if(errorResponse.status === 403) {  // checking for 'forbidden' if API limit reached in this timeframe
+                var resetTime = new Date(errorResponse.getResponseHeader("X-RateLimit-Reset")*1000);
+                $("#gh-user-data").html(`<h4>Too many requests have been made at the moment. Please wait until ${resetTime.toLocaleTimeString} to try again.</h4>`);
             } else { // for other errors
                 console.log(errorResponse);  // for programmer
                 $("#gh-user-data").html(`<h2>Error: ${errorResponse.responseJSON.message}</h2>`);  // for user
